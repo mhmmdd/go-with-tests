@@ -87,3 +87,29 @@ var dictionary = make(map[string]string)
 ```
 
 Both approaches create an empty `hash map` and point `dictionary` at it. Which ensures that you will never get a runtime panic.
+
+
+### How to detect Race Conditions
+Go can help us to spot race conditions with its built in [_race detector_][godoc_race_detector].
+To enable this feature, run the tests with the `race` flag: `go test -race`.
+
+
+### Make it fast
+
+One formulation of an agile way of building software, often misattributed to Kent
+Beck, is:
+
+> [Make it work, make it right, make it fast][wrf]
+
+Where 'work' is making the tests pass, 'right' is refactoring the code, and
+'fast' is optimizing the code to make it, for example, run quickly. We can only
+'make it fast' once we've made it work and made it right. We were lucky that the
+code we were given was already demonstrated to be working, and didn't need to be
+refactored. We should never try to 'make it fast' before the other two steps
+have been performed because
+
+> [Premature optimization is the root of all evil][popt]
+> -- Donald Knuth
+
+[wrf]: http://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast
+[popt]: http://wiki.c2.com/?PrematureOptimization
